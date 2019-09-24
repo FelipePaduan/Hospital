@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Hospital Veterinário</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form id="fromPrincipal">
+            <p:outputLabel value="Nome: "/>
+            <p:inputText value="#{novoAdm.adm.nome}"
+                         required="true"
+                         requiredMessage="Nome Obrigatório"/>
+            
+            <p/>
+            
+            <p:outputLabel value="Login: "/>
+            <p:inputText value="#{novoAdm.adm.login}"
+                         maxlength="15"
+                         required="true"
+                         requiredMessage="Login Obrigatório"/>
+            
+            <p/>
+            
+            <p:outputLabel value="Senha: "/>
+            <p:inputText type="password" value="#{novoAdm.adm.senha}"
+                         required="true"
+                         requiredMessage="Senha obrigatória" />
+            
+            <p/>
+            
+            <p:commandButton value="Salvar" action="#{novoAdm.salvar()}" update="@form"/>
+            <p/>
+            <p:messages showIcon="false" closable="true" />
+        </h:form>
+        <div>Jumentopolis</div>
+    </h:body>
+</html>
