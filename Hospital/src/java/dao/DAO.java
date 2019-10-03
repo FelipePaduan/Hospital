@@ -32,6 +32,33 @@ public class DAO <T> implements Serializable{
         return lista;
         
     }
+    
+    public T alterar(T objeto) {
+        manager = JPAUtil.getEntityManager();
+        manager.getTransaction().begin();
+        objeto = manager.merge(objeto);
+        manager.getTransaction().commit();
+        manager.close();
+        return objeto;
+    }
+
+    public T buscarPorCodigo(Object id) {
+        T objeto;
+        manager = JPAUtil.getEntityManager();
+        objeto = manager.find(classe, id);
+        manager.close();
+        return objeto;
+    }
+        
+    public void excluir(Integer id) {
+        manager = JPAUtil.getEntityManager();
+        EntityTransaction tx = manager.getTransaction();
+        tx.begin();
+        T temp = manager.find(classe, id);
+        manager.remove(temp);
+        tx.commit();
+        manager.close();
+    }
         
     
 }

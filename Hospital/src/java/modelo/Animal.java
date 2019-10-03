@@ -23,6 +23,9 @@ public class Animal implements Serializable {
     @Column(length = 30)
     private String nome;
     
+    @Column(length = 30)
+    private String raca;
+    
     @ManyToOne
     @JoinColumn(name = "dono")
     private Dono dono;
@@ -30,11 +33,13 @@ public class Animal implements Serializable {
 // construtores    
     public Animal() {
         this.nome = "";
+        this.raca = "";
         this.dono = new Dono();
     }
     
-    public Animal(String nome, Dono dono) {
+    public Animal(String nome, String raca, Dono dono) {
         this.nome = nome;
+        this.raca = raca;
         this.dono = dono;
     }
 
@@ -53,6 +58,14 @@ public class Animal implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    public String getRaca() {
+        return raca;
+    }
+
+    public void setRaca(String raca) {
+        this.raca = raca;
     }
 
     public Dono getDono() {

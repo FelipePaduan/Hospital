@@ -7,6 +7,7 @@ package dao;
 
 import java.util.List;
 import modelo.Administrador;
+import modelo.Dono;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -46,12 +47,26 @@ public class DAOTest {
 //        dao.inserir(adm);
 //    }
     
+//    @Test
+//    public void testListar(){
+//        List<Administrador> lista = new DAO(Administrador.class).listarTodos();
+//        for(Administrador adm : lista){
+//            System.out.println(adm);
+//        }
+//    }
+    
     @Test
     public void testListar(){
-        List<Administrador> lista = new DAO(Administrador.class).listarTodos();
-        for(Administrador adm : lista){
-            System.out.println(adm);
+        List<Dono> lista = new DAO(Dono.class).listarTodos();
+        for(Dono dn : lista){
+            System.out.println(dn);
         }
     }
     
+//    @Test
+//    public void testinserir() {
+//        Dono dn = new Dono("tese");
+//        DAO<Dono> dao = new DAO (Dono.class);
+//        dao.inserir(dn);
+//    }
 }
