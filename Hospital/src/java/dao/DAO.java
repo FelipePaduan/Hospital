@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 import util.JPAUtil;
 
@@ -58,6 +59,23 @@ public class DAO <T> implements Serializable{
         manager.remove(temp);
         tx.commit();
         manager.close();
+    }
+    
+     public T buscarPorNome(String nome) throws ExcecaoObjetoNaoEncontrado{
+        T temp = null;
+        manager = JPAUtil.getEntityManager();
+        String sql = "SELECT o FROM "+ classe.getName() +" o WHERE o.nome = :nome";
+        TypedQuery<T> query = manager.createQuery(sql, classe);
+        query.setParameter("nome", nome);
+        try {
+            temp = query.getSingleResult();
+        } catch (Exception e) {  
+            throw new ExcecaoObjetoNaoEncontrado("Nenhum objeto com este nome");
+
+        } finally {
+            manager.close();
+        }
+        return temp;
     }
         
     
