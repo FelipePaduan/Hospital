@@ -33,6 +33,7 @@ public class AdmControle implements Serializable {
     }
 
     public void abrePopupNovo() {
+        adm = new Administrador();
         this.popupNovo = true;
     }
 
